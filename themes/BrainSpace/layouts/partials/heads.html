@@ -1,0 +1,33 @@
+<script>
+  // Google Analytics Initialization
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'xxxxxxxxxxxxx');
+</script>
+
+<!-- Zoom Functionality -->
+
+<script>
+  const appId = "{{ .Site.Params.appId }}"; // LeanCloud app ID
+  const appKey = "{{ .Site.Params.appKey }}"; // LeanCloud app key
+  const serverURL = "{{ .Site.Params.serverURL }}"; // LeanCloud server URL
+  
+  AV.init({
+    appId: appId,
+    appKey: appKey,
+    serverURL: serverURL
+  });
+ 
+</script>
+<script>
+  // 设置背景颜色以避免白色闪烁
+  const theme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (theme === 'dark' || (!theme && prefersDark)) {
+    document.documentElement.classList.add('dark');
+    document.documentElement.style.backgroundColor = 'var(--tw-prose-body-bg)';
+  } else {
+    document.documentElement.style.backgroundColor = '#f5f5f7';
+  }
+</script>

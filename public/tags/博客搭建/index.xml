@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客搭建 on BrainSpace</title><link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><description>Recent content in 博客搭建 on BrainSpace</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 16 Nov 2024 16:22:42 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>BrainSpace DIY部分展示</title><link>http://localhost:1313/post/brainspacediy/</link><pubDate>Sat, 16 Nov 2024 16:22:42 +0800</pubDate><guid>http://localhost:1313/post/brainspacediy/</guid><description>&lt;h4 class="uk-heading-bullet">常用&lt;/h4>
+&lt;div class="uk-text-center uk-card-body">
+ &lt;a href="" class="uk-icon-button uk-margin-small-right">&lt;iconify-icon icon="twemoji:airplane">&lt;/iconify-icon>&lt;/a>
+ &lt;a href="" class="uk-icon-button uk-margin-small-right" uk-icon="facebook">&lt;/a>
+ &lt;a href="" class="uk-icon-button" uk-icon="youtube">&lt;/a>
+&lt;/div>
+&lt;div class="uk-text-center uk-card-body">
+&lt;span class="uk-label">蓝色标签&lt;/span>
+&lt;span class="uk-label uk-label-success">绿色标签&lt;/span>
+&lt;span class="uk-label uk-label-warning">橙色标签&lt;/span>
+&lt;span class="uk-label uk-label-danger">红色标签&lt;/span>
+&lt;/div>
+&lt;em>这是一段文字abc&lt;/em>&amp;emsp;&lt;mark>这是一段文字abc&lt;/mark>&amp;emsp;&lt;del>这是一段文字abc&lt;/del>&amp;emsp;&lt;q>这是一段文字abc&lt;/q>&amp;emsp;&lt;u>这是一段文字abc&lt;/u>&amp;emsp;&lt;small>这是一段文字abc&lt;/small>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">标题&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul uk-accordion class="uk-border-radius">
+ &lt;li class="uk-open" >
+ &lt;a class="uk-accordion-title " href="#">这是一个可以折叠的标签，自动展开&lt;/a>
+ &lt;div class="uk-accordion-content">
+ &lt;p>这是一个可以折叠的标签&lt;/p>
+ &lt;/div>
+ &lt;/li>
+&lt;/ul>
+&lt;ul uk-accordion class="uk-border-radius">
+ &lt;li>
+ &lt;a class="uk-accordion-title" href="#">这是一个 不 可以关闭的提示框，并且它有五种颜色，点击展开查看&lt;/a>
+ &lt;div class="uk-accordion-content">
+
+
+
+&lt;div class="uk-alert-warning1" uk-alert>
+ 这个提示框不能被关闭，它会一直存在。
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-primary" uk-alert>
+ 这是一个 不 可以关闭的提示框，并且它有四种颜色。
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-success" uk-alert>
+ 这是一个 不 可以关闭的提示框，并且它有四种颜色。
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-warning" uk-alert>
+ 这是一个 不 可以关闭的提示框，并且它有四种颜色。
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-danger" uk-alert>
+ 这是一个 不 可以关闭的提示框，并且它有四种颜色。
+&lt;/div>
+
+&lt;/div>
+ &lt;/li>
+&lt;/ul>
+&lt;ul uk-accordion class="uk-border-radius">
+ &lt;li>
+ &lt;a class="uk-accordion-title" href="#">这是一个可以关闭的提示框，并且它有五种颜色，点击展开查看&lt;/a>
+ &lt;div class="uk-accordion-content">
+
+
+
+&lt;div class="uk-alert-warning1" uk-alert>
+ 这是一个可以关闭的提示框，并且它有四种颜色。&lt;a class="uk-alert-close" uk-close>&lt;/a>
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-primary" uk-alert>
+ 这是一个可以关闭的提示框，并且它有四种颜色。&lt;a class="uk-alert-close" uk-close>&lt;/a>
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-success" uk-alert>
+ 这是一个可以关闭的提示框，并且它有四种颜色。&lt;a class="uk-alert-close" uk-close>&lt;/a>
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-warning" uk-alert>
+ 这是一个可以关闭的提示框，并且它有四种颜色。&lt;a class="uk-alert-close" uk-close>&lt;/a>
+&lt;/div>
+
+
+
+
+&lt;div class="uk-alert-danger" uk-alert>
+ 这是一个可以关闭的提示框，并且它有四种颜色。&lt;a class="uk-alert-close" uk-close>&lt;/a>
+&lt;/div>
+
+&lt;/div>
+ &lt;/li>
+&lt;/ul>
+&lt;div class="uk-card uk-card-body uk-width-1-1@m uk-border-radius uk-card-default">
+ &lt;div class="uk-card-badge uk-label-danger">卡片&lt;/div>
+ &lt;h3 class="uk-card-title">这是一个可以添加内容的卡片&lt;/h3>
+ &lt;p>这是一个可以添加内容的卡片&lt;/p>
+&lt;/div>
+&lt;br />
+&lt;div class="uk-card uk-card-default uk-oveww uk-flex-middle uk-box-shadow-hover-small uk-border-radius uk-alert-primary ">一组测试文字
+&lt;/div>
+ &lt;div class="uk-text-center uk-card-body">这是文字 居中&lt;/div>
+ &lt;div class="uk-text-left">这是文字 靠左&lt;/div>
+ &lt;div class="uk-text-right uk-card-body"> 这是文字 靠右&lt;/div>
+&lt;h4 class="uk-heading-bullet">卡片&lt;/h4>
+&lt;hr>
+&lt;div uk-grid="masonry: pack">
+
+&lt;style>
+ .blur-container {
+ position: relative;
+ overflow: hidden;
+ }
+
+ .blur-container .fluent {
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ object-fit: cover;
+ filter: blur(55px);
+ z-index: 0;
+ overflow: visible;
+ -webkit-backdrop-filter: blur(3rem);
+ }
+
+ .blur-container {
+ position: relative;
+ z-index: 1;
+ }
+ .blurcss{
+ margin-top: 12px !important;
+ padding-left: 12px !important;
+ }
+ @media (max-width: 950px){
+ .blurcss{
+ padding-left: 30px !important;
+ }
+ }
+&lt;/style>
+
+&lt;div class="blurcss uk-width-1-2@s ">
+ &lt;blockquote class="blur-container uk-card uk-border-radius uk-accordion uk-box-shadow-hover-small" style=" padding: 30px 30px;" uk-scrollspy=" cls: uk-animation-fade; delay: 70">
+ 
+ 
+ 
+ &lt;p style="text-align: left; font-size: 16px; font-weight: 800; font-style: normal; ">经典对白&lt;/p></description></item><item><title>markdown基本语法展示</title><link>http://localhost:1313/post/markdown/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>http://localhost:1313/post/markdown/</guid><description>&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="http://localhost:1313/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
+&lt;h1 id="一级标题">一级标题&lt;/h1>
+&lt;p>这是一个一级标题，通常用于文章或页面的主标题。它在内容中占据最重要的位置。&lt;/p>
+&lt;h2 id="二级标题">二级标题&lt;/h2>
+&lt;p>二级标题是一个相对次要的标题，通常用于文章的章节或大纲。&lt;/p>
+&lt;h3 id="三级标题">三级标题&lt;/h3>
+&lt;p>三级标题比二级标题更小，通常用于小节或段落标题。&lt;/p>
+&lt;h4 id="四级标题">四级标题&lt;/h4>
+&lt;p>四级标题一般用于小节下的更细分部分。&lt;/p>
+&lt;h5 id="五级标题">五级标题&lt;/h5>
+&lt;p>五级标题通常出现在较长的文档中，层级较深。&lt;/p>
+&lt;h6 id="六级标题">六级标题&lt;/h6>
+&lt;p>六级标题是最小的标题级别，通常用于非常具体的部分。&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>斜体文本&lt;/em> 使用星号表示斜体。&lt;br>
+&lt;em>斜体文本&lt;/em> 使用下划线表示斜体。&lt;/p>
+&lt;p>&lt;strong>加粗文本&lt;/strong> 使用两个星号表示加粗。&lt;br>
+&lt;strong>加粗文本&lt;/strong> 使用两个下划线表示加粗。&lt;/p>
+&lt;p>&lt;em>&lt;strong>斜体加粗文本&lt;/strong>&lt;/em> 也可以同时加粗并倾斜。&lt;/p>
+&lt;hr>
+&lt;ul>
+&lt;li>项目 1&lt;/li>
+&lt;li>项目 2&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>第一项&lt;/li>
+&lt;li>第二项&lt;/li>
+&lt;li>第三项&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;blockquote>
+&lt;p>这是一个引用的段落，通常用于引用他人的话或强调某个观点。&lt;/p>
+&lt;p>引用可以分多行，每行以 &lt;code>&amp;gt;&lt;/code> 开头。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;p>&lt;a href="https://www.google.com">Google&lt;/a>&lt;br>
+这是一个指向 Google 的链接。&lt;/p>
+&lt;p>&lt;a href="https://github.com">GitHub&lt;/a>&lt;br>
+在链接中也可以包含标题属性，例如：&lt;a href="https://github.com" title="点击访问 GitHub">GitHub&lt;/a>。&lt;/p>
+&lt;hr>
+&lt;p>&lt;img src="https://via.placeholder.com/150" alt="图片描述">&lt;br>
+这是一个图片的例子，图片来自 &lt;code>https://via.placeholder.com/150&lt;/code>。&lt;/p>
+&lt;hr>
+&lt;p>这是一个内联公式：$E = mc^2$，它表示能量和质量的关系。&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">左对齐&lt;/th>
+ &lt;th style="text-align: center">居中对齐&lt;/th>
+ &lt;th style="text-align: right">右对齐&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">内容1&lt;/td>
+ &lt;td style="text-align: center">内容2&lt;/td>
+ &lt;td style="text-align: right">内容3&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">内容4&lt;/td>
+ &lt;td style="text-align: center">内容5&lt;/td>
+ &lt;td style="text-align: right">内容6&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">标题&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">date&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">author&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">作者&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">tags&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">标签&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">weight&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">5&lt;/span> &lt;span style="color:#a6e22e">置顶顺序&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#a6e22e">热门文章顺序&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">blogTitle&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">底部版权自定义&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">enableComments&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#a6e22e">评论开关&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">featured_image&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">首页图片&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">summary&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">文章简介&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>这是一个显示公式：
+$$
+a^2 + b^2 = c^2
+$$&lt;/p></description></item><item><title>常用的 Hugo 命令</title><link>http://localhost:1313/post/marticle/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>http://localhost:1313/post/marticle/</guid><description>Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。</description></item></channel></rss>

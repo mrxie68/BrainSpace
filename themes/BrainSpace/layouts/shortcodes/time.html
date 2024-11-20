@@ -1,0 +1,57 @@
+<div id="loading" class="loading-container">
+  <iconify-icon icon="svg-spinners:3-dots-bounce" width="1.3em" height="1.3em"></iconify-icon>
+  </div>
+  
+  <section id="cd-timeline" class="cd-container">
+    <!-- JavaScript 将在这里插入评论数据 -->
+  </section>
+
+<script>
+const pagePath = '{{ .Site.Data.twikoo.timepath }}';
+
+const loadingContainer = document.getElementById('loading');
+loadingContainer.style.display = 'flex';
+
+twikoo.getRecentComments({
+  envId: '{{ .Site.Data.twikoo.envId }}',
+  urls: ['{{ .Site.Data.twikoo.timepath }}'], // 要求云函数版本 >= 1.6.27。不包含协议、域名、参数的文章路径列表，不传默认获取所有最新评论
+  includeReply: false
+}).then(function (allComments) {
+  loadingContainer.style.display = 'none';
+
+  // 不再过滤出特定页面的评论
+  // const pageComments = allComments.filter(comment => comment.url === pagePath);
+
+  const timelineContainer = document.getElementById('cd-timeline');
+
+  allComments.forEach(comment => {
+    const commentContent = comment.comment;
+    const avatarUrl = comment.avatar;
+    const commentTime = new Date(comment.created).toLocaleString();
+
+    const timelineBlock = document.createElement('div');
+    timelineBlock.className = 'cd-timeline-block';
+
+    const timelineImg = document.createElement('div');
+    timelineImg.className = 'cd-timeline-img cd-picture';
+    timelineImg.innerHTML = `<img src="{{ $.Site.Params.imgurl }}{{ .Site.Params.avatar }}" alt="Picture">`;
+
+    const timelineContent = document.createElement('div');
+    timelineContent.className = 'cd-timeline-content uk-animation-slide-bottom-small uk-box-shadow-hover-small';
+    timelineContent.setAttribute('id', 'your-custom-id');
+    timelineContent.innerHTML = `
+      <p>${commentContent}</p>
+      <span class="cd-date">${commentTime}</span>
+    `;
+
+    timelineBlock.appendChild(timelineImg);
+    timelineBlock.appendChild(timelineContent);
+
+    timelineContainer.appendChild(timelineBlock);
+  });
+
+  timelineContainer.style.display = 'block';
+}).catch(function (err) {
+  console.error(err);
+});
+</script>

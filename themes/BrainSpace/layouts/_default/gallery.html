@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ .Content }}
+
+{{ $galleryGroup := .Params.galleryGroup }}
+{{ $groups := index .Site.Data.gallery $galleryGroup }}
+
+{{ range $groups }}
+<div>
+  <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+    <div>
+      <ul class="uk-comment-title uk-margin-remove uk-card uk-card-body" style="padding: 30px 0px 30px 5px;">
+        <h4 style="margin-top: 0px;">
+            <a class="uk-link-reset" href="#" style="font-weight: 800;" alt="suoluetu">{{ .title }}</a>
+        </h4>
+        <li>
+            <h5 style="margin: 0px; color: var(--tw-prose-p); font-size: 16px;">
+                {{ .description }}
+            </h5>
+        </li>
+      </ul>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="js-wrapper scroll-content" id="scroll-content">
+    <div class="pogdt">
+      <div class="uk-grid-smalls uk-child-width-1-2@s uk-child-width-1-5@m zhao-img" uk-grid="masonry: pack" uk-lightbox="animation: fade" uk-scrollspy="target:.uk-inline; cls: uk-animation-fade; delay: 20">
+        {{ range .photos }}
+          <div class="uk-inline">
+            <a href="{{ $.Site.Params.imgurl }}{{ .image }}" data-caption="" data-attrs="width: 1280; height: 720;" loading="lazy">
+              <img class="uk-object-cover uk-card-media-top2" src="{{ $.Site.Params.imgurl }}{{ .image }}" width="1000" height="1000" alt="photo" style="aspect-ratio:{{ .capstyle | safeCSS }}">
+            </a>
+          </div>
+        {{- end -}}
+      </div>
+    </div>
+  </div>
+</div>
+{{- end -}}
+
+
+{{- end -}}

@@ -1,0 +1,47 @@
+<footer class="opaco mx-auto flex flex-col h-[15rem] max-w-3xl items-center px-8 text-[0.9em] " >
+  <div class="uk-animation-slide-bottom-small">
+  <div class="flex flex-col justify-center items-center">
+    <div class="mb-2 opacity-60" style="padding-top: 0px;">
+      Powered by  &copy;&nbsp;{{ $.Site.Params.byYear }}-Present <a class="link" href="{{ `` | absURL }}">&nbsp;&nbsp;{{ .Site.Title }}</a> <span></span>
+    </div>
+    <p class="opacity-60" style="display: flex;padding-top: 0px;" >
+      本站已运行：<span id="days"></span> 天<span class="spacer"></span><span id="hours"></span> 时<span class="spacer"></span><span id="minutes"></span> 分<span class="spacer"></span><span id="seconds"></span> 秒
+    </p>
+    <p class="opacity-60" style="display: flex;padding-top: 0px;" >
+      <a href="{{ .Site.Params.Miiturl }}" title="备案号">{{ .Site.Params.Miit }}</a>
+    </p>
+    <script>
+      // 设置站点建立日期，以年/月/日/小时/分钟/秒的格式表示
+      const siteEstablishedDate = new Date("{{ .Site.Params.Time }}");
+    
+      // 更新时间显示函数
+      function updateElapsedTime() {
+        const currentDate = new Date();
+        const timeDiff = Math.abs(currentDate - siteEstablishedDate);
+    
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+      }
+    
+      // 初始加载时间显示
+      updateElapsedTime();
+    
+      // 每秒更新一次时间显示
+      setInterval(updateElapsedTime, 1000);
+    </script>
+
+<div class="mb-2-1 opacity-60" style="padding-top: 0px;">
+  <a href="/index.xml" aria-label="rss"> <iconify-icon icon="streamline:rss-square-solid" width="21" height="21"  style="color: #ff3300;    margin: 3px;"></iconify-icon></a>
+</div>
+</div>
+{{ if (findRE "<code" .Content 1) }}
+    <script src="{{"/clipboard.js" | relURL}}"></script>
+{{- end -}}
+</footer>

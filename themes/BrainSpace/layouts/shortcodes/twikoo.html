@@ -1,0 +1,125 @@
+{{- $type := .Get "type" -}}
+
+{{- if eq $type "current" -}}
+<div id="tcomment"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        twikoo.init({
+            envId: '{{ .Site.Data.twikoo.envId }}', // 从 YAML 文件中引用 envId
+            el: '#tcomment', // 容器元素
+            // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+            // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+            // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+        });
+        // 隐藏中心文本
+        window.addEventListener('load', function() {
+            var centerText = document.querySelector('#centerText');
+            if (centerText) {
+                centerText.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+{{- else if eq $type "time" -}}  
+<script>
+  twikoo.init({
+    envId: '{{ .Site.Data.twikoo.envId }}',
+    el: '#comments-container-2', // 指定第二个评论区域的容器元素
+    path: '{{ .Site.Data.twikoo.timepath }}', // 指定第二个评论区域的页面路径 
+    // 其他配置参数根据实际需求设置
+  });
+</script>
+
+{{- else if eq $type "space" -}}  
+<script>
+    twikoo.init({
+      envId: '{{ .Site.Data.twikoo.envId }}',
+      el: '#comments-container-1', // 指定第二个评论区域的容器元素
+      path: '{{ .Site.Data.twikoo.spacepath }}', // 指定第二个评论区域的页面路径
+      // 其他配置参数根据实际需求设置
+    });
+</script>
+
+
+{{- else if eq $type "message" -}}  
+<div>
+    <div id="loading-indicator"><iconify-icon icon="svg-spinners:3-dots-bounce" width="1.2rem" height="1.2rem" style="text-align: center;
+        height: 136px;margin-left: 50%;display: inline-flex; align-items: center;
+        left: 50%;"></iconify-icon></div>
+    <div id="avatar-container" class="uk-child-width-1-8@l uk-grid-small uk-grid-match" uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 8" uk-grid >
+    </div>
+</div>
+<script>
+    twikoo.getRecentComments({
+      envId: '{{ .Site.Data.twikoo.envId }}',
+      pageSize: 20,
+      includeReply: false
+    }).then(function(comments) {
+      var container = document.getElementById('avatar-container');
+      var loadingIndicator = document.getElementById('loading-indicator');
+    
+      // 用对象来存储已经添加的用户名和头像 URL
+      var addedUsers = {};
+    
+      // 记录已添加评论的数量
+      var addedCount = 0;
+    
+      comments.forEach(function(comment) {
+        if (addedCount >= 9) {
+          return; // 如果已经添加了10个评论，则退出循环
+        }
+    
+        var avatarUrl = comment.avatar;
+        var username = comment.nick;
+    
+        // 去除用户名中的空格
+        username = username.replace(/\s/g, '');
+    
+        // 检查用户名是否包含 "brain hole"，如果是则跳过
+        if (username.toLowerCase().includes('brainhole')) {
+          return;
+        }
+    
+        // 检查是否已经添加了该用户
+        if (!addedUsers[username]) {
+          // 将该用户添加到已添加列表中
+          addedUsers[username] = true;
+          
+          // 创建自定义框
+          var customBox = document.createElement('div');
+          // 添加类名，用于控制样式
+          customBox.className = 'uk-first-column';
+          // 设置自定义框的内容
+          customBox.innerHTML = `
+              <div class="uk-card uk-card-default uk-card-body uk-box-shadow-hover-small uk-border-radius" style="display: flex;
+        flex-wrap: wrap;flex-direction: row;align-content: center; align-items: center; justify-content: center;    padding: 20px 10px;">
+                <img src="${avatarUrl}" alt="Avatar" style="max-width: 60px; max-height: 60px;border-radius: 100%;">
+                <span style="margin-top: 8px;color: var(--tw-prose-p);font-size: 16px;    width: 100%;text-align: center;text-overflow: ellipsis;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">${username}</span>
+              </div>
+          `;
+    
+          // 将自定义框添加到页面上
+          container.appendChild(customBox);
+    
+          // 更新已添加评论的数量
+          addedCount++;
+        }
+      });
+    
+      // 如果不够10个评论，你可以在这里添加逻辑去加载更多评论，或者做其他处理
+    
+      // 隐藏加载指示器
+      loadingIndicator.style.display = 'none';
+    }).catch(function(err) {
+      // 错误处理逻辑
+      console.error(err);
+    });
+    
+    </script>
+
+
+
+
+{{- end -}}

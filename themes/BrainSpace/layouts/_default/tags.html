@@ -1,0 +1,44 @@
+{{ define "main" }}
+
+  {{ .Content }}
+
+
+    {{ range $taxonomy, $terms := .Site.Taxonomies }}
+        
+                <ul>
+                    {{ range $terms }}
+                        <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+                    {{- end -}}
+                </ul>
+    {{- end -}}
+
+
+
+
+  <div class="uk-grid" uk-grid style="margin-top: 0px;">
+    {{ $numPages := len (.Site.GetPage "section" "post").Pages }}
+    {{ $numColumns := 3 }}
+    {{ $numRows := div $numPages $numColumns }}
+    {{ $remainingItems := mod $numPages $numColumns }}
+
+    {{ range $i, $page := (.Site.GetPage "section" "post").Pages }}
+  <div class="uk-width-1-{{ $numColumns }}@m">  <a href="{{ $page.Permalink }}">
+            <div class="tags-ha uk-box-shadow-hover-small uk-border-radius">
+                <li style="padding: 0px 10px 0px 0px">
+                    <span>{{ $page.Title }}</span>
+                </li>
+                <img src="{{ $.Site.Params.imgurl }}{{ $page.Params.featured_image }}" alt="Featured Image" style="width: 30%;">
+            </div></a>
+        </div>
+        {{ if and (gt $i 0) (eq (mod (add $i 1) $numColumns) 0) }}
+            </div><div class="uk-grid" uk-grid style="margin-top: 0px;">
+        {{- end -}}
+    {{- end -}}
+
+    {{ if ne $remainingItems 0 }}
+        </div>
+    {{- end -}}
+</div>
+
+
+{{- end -}}

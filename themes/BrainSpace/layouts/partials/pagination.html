@@ -1,0 +1,66 @@
+    <!-- 开始 分页导航 -->
+    {{ $paginator := .Paginator }}
+    <!-- 基础偏移变量 -->
+    {{ $offsetLinks := 2 }}
+    <!-- $maxLinks = ($offsetLinks * 2) + 1 -->
+    {{ $maxLinks := (add (mul $offsetLinks 2) 1) }}
+    <!-- $lowerLimit = $offsetLinks + 1 -->
+    {{ $lowerLimit := (add $offsetLinks 1) }}
+    <!-- $upperLimit = $paginator.TotalPages - $offsetLinks -->
+    {{ $upperLimit := (sub $paginator.TotalPages $offsetLinks) }}
+    
+    <!-- 如果有超过一页的内容 (即需要导航栏) -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <ul class="pagination">
+        <!-- 上一页 -->
+        {{ if $paginator.HasPrev }}
+        <li class="pag-item pag-previous">
+            <a href="{{ $paginator.Prev.URL }}" class="pag-link">上一页</a>
+        </li>
+        {{- end -}}
+    
+        <!-- 数字页码部分 -->
+        {{ range $paginator.Pagers }}
+        {{ $.Scratch.Set "pageNumFlag" false }}
+        <!-- 页码数足够多的情况 -->
+        {{ if gt $paginator.TotalPages $maxLinks }}
+            <!-- 如果当前页面为例子中的 1-3 区间  -->
+            {{ if le $paginator.PageNumber $lowerLimit }}
+                {{ if le .PageNumber $maxLinks }}
+                {{ $.Scratch.Set "pageNumFlag" true }}
+                {{- end -}}
+            <!-- 如果当前页面为例子中的 8-10 区间 -->
+            {{ else if ge $paginator.PageNumber $upperLimit }}
+                {{ if gt .PageNumber (sub $paginator.TotalPages $maxLinks) }}
+                {{ $.Scratch.Set "pageNumFlag" true }}
+                {{- end -}}
+            <!-- 如果当前页面为例子中的 4-7 区间 -->
+            {{ else }}
+                {{ if and ( ge .PageNumber (sub $paginator.PageNumber $offsetLinks) ) ( le .PageNumber (add $paginator.PageNumber $offsetLinks) ) }}
+                {{ $.Scratch.Set "pageNumFlag" true }}
+                {{- end -}}
+            {{- end -}}
+        <!-- 页码数不够多的情况 -->
+        {{ else }}
+            {{ $.Scratch.Set "pageNumFlag" true }}
+        {{- end -}}
+        <!-- 输出页码 -->
+        {{ if eq ($.Scratch.Get "pageNumFlag") true }}
+        <li class="pag-item{{ if eq . $paginator }} pag-current{{- end -}}">
+            <a href="{{ .URL }}" class="pag-link">
+                {{ .PageNumber }}
+            </a>
+        </li>
+        {{- end -}}
+        {{- end -}}
+    
+        <!-- 下一页 -->
+        {{ if $paginator.HasNext }}
+        <li class="pag-item pag-next">
+            <a href="{{ $paginator.Next.URL }}" class="pag-link">下一页</a>
+        </li>
+        {{- end -}}
+    </ul>
+    {{- end -}}
+
+  </li>

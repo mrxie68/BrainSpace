@@ -1,0 +1,16 @@
+{{ $content := .Inner | markdownify }}
+
+{{ if .Get "type" }}
+<div class="uk-alert-{{ .Get "type" }}" uk-alert>
+    {{ $content }}
+</div>
+{{ else if .Get "color" }}
+<div class="uk-alert-{{ .Get "color" }}" uk-alert>
+    {{ $content }}<a class="uk-alert-close" uk-close></a>
+</div>
+{{ else }}
+
+<div uk-alert>
+    {{ $content }}
+</div>
+{{- end -}}

@@ -1,0 +1,23 @@
+
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML}}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+<url>
+<loc>{{ .Site.BaseURL }}</loc>
+<lastmod>{{ safeHTML ( .Site.Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+
+{{- range .Data.Pages }}
+{{- if and (eq .Type "post") (ne .Permalink "https://www.brain-hole.org/post/") }}
+<url>
+<loc>{{ .Permalink }}</loc>
+<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+{{end }}
+{{- end -}}
+
+</urlset>

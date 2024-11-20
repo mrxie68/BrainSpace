@@ -1,0 +1,476 @@
+{{ define "main" }}
+<!-- Tag Title -->
+{{ if and .Title (eq .Type "tags") }}
+<div class="tags-list" id="scroll-container">
+  <ul style="display: flex;">
+    {{ $tags := .Site.Taxonomies.tags }}
+    {{ range $tagName, $tag := $tags }}
+    {{ if ne $tagName "友链推荐" }}
+    <li>
+      <a class="tags-top  uk-box-shadow-hover-small" href="{{ "tags/" | relLangURL }}{{ $tagName | urlize }}"
+        data-tag="{{ $tagName }}">{{ $tagName }}</a>
+    </li>
+    {{- end -}}
+    {{- end -}}
+  </ul>
+</div>
+{{- end -}}
+
+<!-- $pages -->
+{{ $pages := union .RegularPages .Sections }}
+{{ if .IsHome }}
+{{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- end -}}
+
+<!-- Articles -->
+{{ $paginator := .Paginate $pages }}
+{{ range $index, $page := $paginator.Pages }}
+<!-- avatar -->
+{{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}
+{{ $avatar_url := $.Scratch.Get "avatar_url" }}
+{{ if or $avatar_url site.Params.name }}
+{{ if $avatar_url }}
+<!-- 轮播推荐 -->
+{{- end -}}
+</div>
+{{- end -}}
+
+{{ $customCSSStartDate := .Site.Params.customCSSStartDate1 | default "" }}
+{{ $customCSSEndDate := .Site.Params.customCSSEndDate1 | default "" }}
+{{ $currentDate := now.Format "2006-01-02" }}
+{{ if and (ge $currentDate $customCSSStartDate) (le $currentDate $customCSSEndDate) }}
+{{ partial "custom_css1.html" . }}
+{{- end -}}
+{{- end -}}
+
+{{- end -}}
+{{ if .IsHome }}
+
+<div>
+  <div class="uk-card uk-card-default uk-flex-middle uk-box-shadow-hover-small uk-border-radius guid-hi"
+    style="height: 65px; overflow: hidden; position: relative;">
+    <svg t="1701706251779" id="iconify-top" style="position: absolute;left: 20px;width: 45px;" class="icon"
+      viewBox="0 0 1588 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6760">
+      <path
+        d="M512 0h564.965517c282.765241 0 512 229.234759 512 512S1359.730759 1024 1076.965517 1024H512C229.234759 1024 0 794.765241 0 512S229.234759 0 512 0z"
+        fill="#FCEDF3" p-id="6761"></path>
+      <path
+        d="M797.625379 741.517241c28.742621 0 45.197241-21.115586 49.381518-63.329103l30.049103-304.022069c4.184276-42.213517-8.103724-63.329103-36.846345-63.329103-28.742621 0-45.197241 21.115586-49.381517 63.329103l-10.187035 103.141517c-0.211862 2.01269-1.288828 3.019034-3.248551 3.019035h-138.20469c-1.959724 0-2.842483-1.006345-2.648276-3.00138l10.187035-103.159172c4.184276-42.213517-8.103724-63.329103-36.846345-63.329103-28.742621 0-45.197241 21.115586-49.363862 63.329103l-30.066759 304.022069c-4.166621 42.213517 8.121379 63.329103 36.846345 63.329103 28.742621 0 45.197241-21.115586 49.381517-63.329103l11.864276-120.055172c0.194207-1.995034 1.288828-3.001379 3.248552-3.00138h138.204689c1.959724 0 2.842483 1.006345 2.648276 3.00138l-11.864276 120.055172C756.594759 720.401655 768.882759 741.517241 797.625379 741.517241z m211.438345-370.370207c13.382621 0 24.646621-3.407448 33.792-10.24 9.127724-6.850207 14.477241-18.202483 16.066207-34.074482 1.57131-15.889655-1.553655-27.259586-9.339586-34.092138-7.768276-6.832552-18.573241-10.257655-32.344276-10.257655-13.382621 0-24.646621 3.319172-33.75669 9.957517-9.127724 6.638345-14.477241 17.990621-16.066207 34.074483-1.588966 16.083862 1.588966 27.542069 9.586759 34.392275 7.980138 6.832552 18.661517 10.24 32.061793 10.24zM971.846621 741.517241c27.948138 0 44.014345-21.115586 48.19862-63.329103l20.038621-202.681379c4.166621-42.231172-7.71531-63.329103-35.663448-63.329104-27.965793 0-44.032 21.097931-48.198621 63.329104l-20.038621 202.681379c-4.184276 42.213517 7.697655 63.329103 35.663449 63.329103z"
+        fill="#F3769D" p-id="6762"></path>
+    </svg>
+    <span style="z-index: 1;">
+      <a href="{{ .Site.Data.twikoo.spacepath }}" style="text-decoration: none; color: inherit;">
+        <div id="loading-indicator" class="loading-indicator "><iconify-icon
+            icon="svg-spinners:3-dots-bounce"></iconify-icon></div>
+        <div id="comments-container" class="uk-animation-slide-bottom-small" style="display: none;"  data-env-id="{{ .Site.Data.twikoo.envId }}" 
+        data-spacepath="{{ .Site.Data.twikoo.spacepath }}"></div>
+        <!-- <svg class="shaking-star" xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 32 32"><path fill="#fcd53f" d="m18.7 4.627l2.247 4.31a2.27 2.27 0 0 0 1.686 1.189l4.746.65c2.538.35 3.522 3.479 1.645 5.219l-3.25 2.999a2.225 2.225 0 0 0-.683 2.04l.793 4.398c.441 2.45-2.108 4.36-4.345 3.24l-4.536-2.25a2.282 2.282 0 0 0-2.006 0l-4.536 2.25c-2.238 1.11-4.786-.79-4.345-3.24l.793-4.399c.14-.75-.12-1.52-.682-2.04l-3.251-2.998c-1.877-1.73-.893-4.87 1.645-5.22l4.746-.65a2.23 2.23 0 0 0 1.686-1.189l2.248-4.309c1.144-2.17 4.264-2.17 5.398 0"/></svg> -->
+    </span>
+  </div>
+  </a>
+</div>
+<div class="uk-grid-match uk-grid-small uk-text-center " style="margin: 0px;" uk-grid>
+  <div class="uk-width-3-5@m uk-width-2-3@l" style=" padding-left: 0px;">
+    <div class="uk-child-width-1-2@m" uk-grid style="margin-top: 0px;">
+      {{ range $index, $page := $paginator.Pages }}
+      <div style="margin-top: 20px;" class="uk-card" uk-scrollspy="cls:uk-animation-slide-bottom-small">
+        {{ $customLink := .Params.links }}
+        <a href="{{ if $customLink }}{{ $customLink }}" {{ if $customLink }} target="_blank" {{- end -}}{{ else }}{{
+          .Permalink }}"{{ end }} class="uk-link-reset" aria-label="{{ .Title }}">
+          <div class="uk-card  uk-box-shadow-hover-small uk-border-radius" style="overflow: hidden;">
+            <div class="uk-card-media-top1 uk-inline uk-card-height" style="height: 228.85px;display: flex;">
+              <div class="loading-container"
+                style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%; z-index: -1;">
+                <iconify-icon icon="svg-spinners:3-dots-bounce" width="1.3em" height="1.3em"></iconify-icon>
+              </div>
+              <img class="loaded-image"
+                src="{{ $.Site.Params.imgurl }}{{ with .Params.featured_image }}{{ . }}{{- end -}}" alt="{{ .Title }}"
+                width="100%" height="221" style="border-radius: 15px 15px 0px 0px;">
+            </div>
+
+            <div class="card-tagso1">
+              <div class="loading-container"
+                style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%; z-index: 1;">
+                <iconify-icon icon="svg-spinners:3-dots-bounce" width="1.3em" height="1.3em"></iconify-icon>
+              </div>
+              <img class="loaded-image"
+                src="{{ $.Site.Params.imgurl }}{{ with .Params.featured_image }}{{ . }}{{- end -}}" alt="{{ .Title }}"
+                width="100%" height="221">
+            </div>
+
+        <script>
+              window.addEventListener('load', function () {
+                const images = document.querySelectorAll('.loaded-image');
+                images.forEach(function (img) {
+                  const loadingContainer = img.previousElementSibling;
+                  if (loadingContainer && loadingContainer.classList.contains('loading-container')) {
+                    if (img.complete) {
+                      loadingContainer.style.display = 'none';
+                    }
+                    img.onload = function () {
+                      loadingContainer.style.display = 'none';
+                    }
+                    img.onerror = function () {
+                      loadingContainer.style.display = 'none';
+                    }
+                  }
+                });
+              });
+          </script>
+
+            <div id="uk-card-tags" class="uk-card-body">
+
+              <div>
+                {{ if and (gt .Weight 0) (le .Weight 5) }}
+                <div class="top-page">
+                
+                </div>
+                {{ else if and (gt .Weight 5) (le .Weight 10) }}
+                <div class="top-page1">
+
+                </div>
+                {{- end -}}
+
+                <p
+                  style="margin-bottom: 0em;margin-bottom: 0em;font-weight: 500;font-weight: 800;font-size: 17.5px;line-height: 1.4;height: 55px;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 2;">
+                  {{ .Title }}</p>
+              </div>
+              <div class="text-sm" style="text-decoration: none;align-items: center;">
+                <!-- 标签部分的链接 -->
+                <div class="tag-28-filled">
+                  <div style="position: relative;"><img
+                      class="my-0 aspect-square rounded-full !bg-black/5  dark:!bg-black/80"
+                      src="{{ $.Site.Params.imgurl }}{{ .Site.Params.avatar }}" alt="avatar"
+                      style="width: 1.5rem;background-color: #f7f8fc!important;top: 0px;position: relative;"></div>
+                  {{ if $customLink }}
+                  <div style="border-radius: 99px;left: 10px;position: relative;font-weight: bold;">
+                    {{ range .Params.tags }}
+                    {{ $href := print (absURL "/tags/") (urlize .) }}
+                    <a href="{{ $customLink }}" target="_blank"><iconify-icon icon="fluent:tag-24-filled" width="1.1em"
+                        height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                      "></iconify-icon>{{ . }}</a>
+                    {{- end -}}
+                  </div>
+                  {{- end -}}
+                  {{ if not $customLink }}
+                  <div style="border-radius: 99px;left: 10px;position: relative;font-weight: bold;">
+                    {{ range .Params.tags }}
+                    {{ $href := print (absURL "/tags/") (urlize .) }}
+                    <a href="{{ $href }}"><iconify-icon icon="fluent:tag-24-filled" width="1.1em" height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                  "></iconify-icon>{{ . }}</a>
+                    {{- end -}}
+                  </div>
+                  {{- end -}}
+                  <div style="right: 2rem; position:absolute;"><iconify-icon icon="mdi:clock-time-three" width="1.1em"
+                      height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                    "></iconify-icon>{{ .Date | time.Format "2006年1月2日" }}</div>
+                  <div style="left: 20px;  position: relative;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+
+  <div id="effecting-top" class="uk-width-1-5@m uk-width-1-3@l  "
+    style=" padding-left: 20px;display: block;padding-top: 20px;" uk-scrollspy="cls:uk-animation-slide-bottom-small">
+    <div class="cardtop uk-card-default uk-box-shadow-hover-small" style="margin-top: 0px; ">
+      <!-- 个人资料邮件@ -->
+      <!-- <button class="mail">
+        <a href="mailto:admin@brain-hole.org"><svg style="stroke-width: 1px;" xmlns="http://www.w3.org/2000/svg"
+            width="25" height="25" viewBox="0 0 24 24">
+            <path fill="#ff8c8c"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.34 0-8-3.66-8-8s3.66-8 8-8s8 3.66 8 8v1.43c0 .79-.71 1.57-1.5 1.57s-1.5-.78-1.5-1.57V12c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5c1.38 0 2.64-.56 3.54-1.47c.65.89 1.77 1.47 2.96 1.47c1.97 0 3.5-1.6 3.5-3.57V12c0-5.52-4.48-10-10-10m0 13c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3s-1.34 3-3 3" />
+          </svg></a>
+      </button> -->
+      <div class="profile-pic">
+        <img id="svg2" src="{{ $.Site.Params.imgurl }}{{ .Site.Params.topavatar }}" width="295px" height="260px" alt="头像">
+      </div>
+      <div class="bottom">
+        <div style="backdrop-filter: blur(1rem);-webkit-backdrop-filter: blur(1rem);height: 300px;"></div>
+        <div class="content">
+          <span class="name"><img src="{{ $.Site.Params.imgurl }}{{ .Site.Params.brainhole }}"
+              style="padding:0px 5px 5px;" alt="brain-hole" width="110" height="32"></span>
+          <span class="about-me">{{ .Site.Params.aboutme }}</span>
+        </div>
+        <div class="bottom-bottom">
+          <div class="social-links-container">
+            {{ if .Site.Params.searchurl }}
+            <a href="{{ .Site.Params.searchurl }}" aria-label="popurl" class="icon-ss">
+              <iconify-icon class="icon-class" icon="tabler:photo-filled" width="24" height="24"></iconify-icon>
+            </a>
+            {{- end -}}
+
+            {{ if .Site.Params.githuburl }}
+            <a href="{{ .Site.Params.githuburl }}" target="_blank" aria-label="githuburl" class="icon-ss">
+              <iconify-icon class="icon-class" icon="fa6-brands:github-alt" width="27" height="27"></iconify-icon>
+            </a>
+            {{- end -}}
+
+            {{ if .Site.Params.twitterurl }}
+            <a href="{{ .Site.Params.twitterurl }}" target="_blank" aria-label="twiturl" class="icon-ss">
+              <iconify-icon class="icon-class" icon="line-md:twitter-x" width="23" height="23"></iconify-icon>
+            </a>
+            {{- end -}}
+          </div>
+
+          <button class="button" onclick="window.location.href='{{ .Site.Params.aboutmeurl }}';">关于我</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div style="margin-top: 85px; ">
+      <div class="uk-card uk-card-default uk-flex-center uk-flex-middle uk-box-shadow-hover-small uk-border-radius"
+        style=" overflow: hidden; position: relative; padding:20px 20px;">
+        <div class="like-container uk-text-center ">
+          <button class="likeButton" data-page-path="/" data-liked-icon="fxemoji:tulip"
+            data-unliked-icon="twemoji:wrapped-gift"><iconify-icon icon="twemoji:wrapped-gift" width="1.6rem"
+              height="1.6rem" style="margin-bottom: -5px;
+    "></iconify-icon> Like </button> <span class="likeCount">0</span>
+        </div>
+      </div>
+    </div> -->
+    
+    <div class="uk-box-shadow-hover-small" style="margin-top:0px; margin-top: 85px; ">
+      <div class="uk-card uk-card-default uk-flex-center uk-flex-middle"
+        style="overflow: hidden; position: relative; padding: 10px 20px; margin-top: 20px;    border-radius: 15px 15px 0px 0px;">
+        <div style="display: flex; align-items: center; width: 100%; position: relative;">
+          <iconify-icon icon="twemoji:purse" width="1.2em" height="1.2em" style="z-index: 1;"></iconify-icon>
+          <div style="overflow: hidden; white-space: nowrap; position: relative;width: 83%;">
+            <p uk-margin
+              style="display: inline-block; padding-left: 100%; animation: scroll-text 15s linear infinite;margin-bottom: 0px;">
+              <a href="{{ .Site.Data.brain.topurl }}" style="color: var(--tw-prose-p)">{{ .Site.Data.brain.toptxt
+                }}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </p>
+          </div>
+          <div
+            style="position: absolute; top: 0; right: 0; width: 25px; height: 100%; background: var(--tw-prose-invert-gx)">
+          </div>
+          <div
+            style="position: absolute; top: 0; left: 0; width: 25px; height: 100%; background: var(--tw-prose-invert-gx)">
+          </div>
+        </div>
+      </div>
+     
+      <div class="uk-card uk-card-default uk-flex-center uk-flex-middle"
+        style=" overflow: hidden; position: relative;border-radius: 0px 0px 15px 15px;">
+        <div class="uk-child-width-1-1@s uk-light" uk-grid>
+          <div>
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"
+              uk-slideshow="  animation: push ; autoplay-interval:6000;easing:ease; autoplay:true;">
+
+              <div class="uk-slideshow-items">
+                {{ $brain := .Site.Data.brain.shopping }}
+                {{ range $brain }}
+                <div>
+                  <img src="{{ $.Site.Params.imgurl }}{{ .image }}" alt="" uk-cover
+                    >
+                </div>
+                {{- end -}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div style="    position: absolute;
+        bottom: 6px;
+        right: 30%;">
+
+          <p uk-margin>
+            <a href="{{  .Site.Data.brain.shptopurl }}" class="uk-button uk-button-danger uk-border-radius"
+              style="font-weight: 600; letter-spacing: 2px;color:#fff;">
+              {{ .Site.Data.brain.shptoptxt }}
+            </a>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+    <div id="uk-card12wwdx1" class="cardtop1 uk-card-default uk-box-shadow-hover-small " data-env-id="{{ .Site.Data.twikoo.envId }}" data-messagepath="{{ .Site.Data.twikoo.messagepath }}" 
+      style="margin-top: 20px;overflow: hidden;position: relative;min-height: 269.5px;">
+      <div style="padding-bottom:1rem;padding-top:0.5rem;"> </div>
+      <div class="cardtop1__wrapper">
+        <div class="cardtop1___wrapper-acounts">
+          <div class="cardtop1__score">+2</div>
+          <div class="cardtop1__acounts"><!-- 头像容器 --></div>
+        </div>
+        <div class="cardtop1__menu" id="commentIndex" style="display:none;"></div>
+        <!-- <button onclick="refreshComments()"></button> -->
+        <span class="loadingtop" id="loading" style="display: none;"></span>
+      </div>
+      <div class="comment-animation uk-animation-slide-bottom-small">
+        <a href="{{ .Site.Data.twikoo.messagepath }}">
+          <div class="cardtop1__title"></div>
+          <div class="cardtop1__subtitle"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+              viewBox="0 0 24 24">
+              <circle cx="4" cy="12" r="3" fill="currentColor">
+                <animate id="svgSpinners3DotsBounce0" attributeName="cy" begin="0;svgSpinners3DotsBounce1.end+0.25s"
+                  calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" />
+              </circle>
+              <circle cx="12" cy="12" r="3" fill="currentColor">
+                <animate attributeName="cy" begin="svgSpinners3DotsBounce0.begin+0.1s" calcMode="spline" dur="0.6s"
+                  keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" />
+              </circle>
+              <circle cx="20" cy="12" r="3" fill="currentColor">
+                <animate id="svgSpinners3DotsBounce1" attributeName="cy" begin="svgSpinners3DotsBounce0.begin+0.2s"
+                  calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" />
+              </circle>
+            </svg></div>
+        </a>
+      </div>
+      <div class="cardtop1__indicator">
+        <span class="cardtop4__title" id="commentTime"></span>
+      </div>
+    </div>
+<!--此处可以使用模板list.js-->    
+    <div style="margin-top: 20px; ">
+      <div class="uk-card uk-card-default uk-flex-center uk-flex-middle uk-box-shadow-hover-small uk-border-radius"
+        style=" overflow: hidden; position: relative; padding:20px 20px;">
+        <strong>全部分类</strong>
+        <p></p>
+        <div class="mt-24">
+          <ul class="flex flex-wrap ">
+            {{ $tags := .Site.Taxonomies.tags }}
+            {{ range $tagName, $tag := $tags }}
+            {{ if ne $tagName "友链推荐" }}
+            <li class="classbg">
+              <a style="padding: 6px 10px;" class="timeline-item" href="{{ "tags/" | relLangURL }}{{ $tagName | urlize }}">
+                {{ $tagName }}
+              </a>
+            </li>
+            {{- end -}}
+            {{- end -}}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="margin-top: 20px;">
+      <div class="uk-card uk-card-default uk-flex-center uk-flex-middle uk-box-shadow-hover-small uk-border-radius"
+        style=" overflow: hidden; position: relative; padding:20px 15px;">
+        <strong>最新文章</strong>
+        <ul class="timeline">
+          {{ $recentPosts := (where .Site.RegularPages "Section" "post").ByDate.Reverse | first 10 }}
+          {{ range $recentPosts }}
+          {{ $hasLinks := .Params.links }}
+          {{ if not $hasLinks }}
+          <li class="timeline-item" style="padding: 6px 0px;">
+            <a style="text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -webkit-line-clamp: 1; margin: 0px 15px;" href="{{ .Permalink }}">
+              <iconify-icon icon="ooui:articles-ltr" width="1em" height="1em"
+                style="margin-bottom: -4px;"></iconify-icon>
+              {{ .Title }}
+            </a>
+          </li>
+          {{- end -}}
+          {{- end -}}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div style="display: flex;justify-content: center;width: 100%;">
+    {{ template "_internal/pagination.html" . }}
+  </div>
+  {{- end -}}
+
+  {{ if and .Title (eq .Type "tags") }}
+  <div class="uk-child-width-1-3@m " uk-grid style="margin-top: 0px;">
+    {{ range $index, $page := $paginator.Pages }}
+    <div style="margin-top: 20px;">
+      {{ $customLink := .Params.links }}
+      <a href="{{ if $customLink }}{{ $customLink }}" {{ if $customLink }} target="_blank" {{- end -}}{{ else }}{{
+        .Permalink }}"{{ end }} class="uk-link-reset " aria-label="{{ .Title }}">
+        <div class="uk-card  uk-box-shadow-hover-small uk-border-radius" style="overflow: hidden;">
+          <div class="uk-card-media-top1 uk-inline uk-card-height" style="height: 228.85px;display: flex;">
+            <div class="loading-container"
+              style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%; z-index: -1;">
+              <iconify-icon icon="svg-spinners:3-dots-bounce" width="1.3em" height="1.3em"></iconify-icon>
+            </div>
+            <img class="loaded-image" src="{{ $.Site.Params.imgurl }}{{ with .Params.featured_image }}{{ . }}{{- end -}}"
+              alt="{{ .Title }}" width="100%" height="221" style="border-radius: 15px 15px 0px 0px;">
+          </div>
+
+          <div class="card-tagso1">
+            <div class="loading-container"
+              style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%; z-index: 1;">
+              <iconify-icon icon="svg-spinners:3-dots-bounce" width="1.3em" height="1.3em"></iconify-icon>
+            </div>
+            <img class="loaded-image" src="{{ $.Site.Params.imgurl }}{{ with .Params.featured_image }}{{ . }}{{- end -}}"
+              alt="{{ .Title }}" width="100%" height="221">
+          </div>
+
+
+          <div id="uk-card-tags" class="uk-card-body">
+
+            <div>
+              {{ if and (gt .Weight 0) (le .Weight 5) }}
+              <div class="top-page">
+                <iconify-icon style="position: absolute;left: 5px; top: 0px;" class="icon" icon="noto-v1:wind-chime"
+                  width="30" height="30"></iconify-icon>
+              </div>
+              {{ else if and (gt .Weight 5) (le .Weight 10) }}
+              <div class="top-page1">
+
+              </div>
+              {{- end -}}
+
+              <p
+                style="margin-bottom: 0em;margin-bottom: 0em;font-weight: 500;font-weight: 800;font-size: 17.5px;line-height: 1.4;height: 55px;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 2;">
+                {{ .Title }}</p>
+            </div>
+            <div class="text-sm" style="text-decoration: none;align-items: center;">
+              <!--<div class="blog-post-excerpt" style="word-break: break-word;"> {{ .Summary }}</div>-->
+              <!-- 标签部分的链接 -->
+              <div class="tag-28-filled">
+                <div style="position: relative;"><img
+                    class="my-0 aspect-square rounded-full !bg-black/5  dark:!bg-black/80"
+                    src="{{ $.Site.Params.imgurl }}{{ .Site.Params.avatar }}" alt="avatar"
+                    style="width: 1.5rem;background-color: #f7f8fc!important;top: 0px;position: relative;"></div>
+                {{ if $customLink }}
+                <div style="border-radius: 99px;left: 10px;position: relative;font-weight: bold;">
+                  {{ range .Params.tags }}
+                  {{ $href := print (absURL "/tags/") (urlize .) }}
+                  <a href="{{ $customLink }}" target="_blank"><iconify-icon icon="fluent:tag-24-filled" width="1.1em"
+                      height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                    "></iconify-icon>{{ . }}</a>
+                  {{- end -}}
+                </div>
+                {{- end -}}
+                {{ if not $customLink }}
+                <div style="border-radius: 99px;left: 10px;position: relative;font-weight: bold;">
+                  {{ range .Params.tags }}
+                  {{ $href := print (absURL "/tags/") (urlize .) }}
+                  <a href="{{ $href }}"><iconify-icon icon="fluent:tag-24-filled" width="1.1em" height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                "></iconify-icon>{{ . }}</a>
+                  {{- end -}}
+                </div>
+                {{- end -}}
+                <div style="right: 2rem; position:absolute;"><iconify-icon icon="mdi:clock-time-three" width="1.1em"
+                    height="1.1em" style="margin-bottom: -3px;margin-right: 4px;
+                  "></iconify-icon>{{ .Date | time.Format "2006年1月2日" }}</div>
+                <div style="left: 20px;  position: relative;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{- end -}}
+  </div>
+  {{ template "_internal/pagination.html" . }}
+
+  {{- end -}}
+
+  {{- end -}}

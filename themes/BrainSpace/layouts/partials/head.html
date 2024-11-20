@@ -1,0 +1,84 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=5" />
+  <title>{{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}</title>
+  <meta name="theme-color" content="#000000" />
+  {{- $site_author := or site.Author.name site.Params.name site.Title -}}
+  <link rel="canonical" href="{{- .Permalink -}}" />
+  <meta name="description" content="{{- .Summary -}}{{- site.Params.description | default `A personal blog` -}}" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}" />
+  <meta property="og:description" content="{{- .Summary -}}{{- site.Params.description | default `A personal blog` -}}" />
+  <meta property="og:url" content="{{- .Permalink -}}" />
+  <meta property="og:site_name" content="{{- or .Params.author $site_author -}}" />
+  <meta property="article:published_time" content="{{- .Date.Format "2006-01-02T15:04:05" | safeHTML -}}" />
+  <meta property="article:modified_time" content="{{- $.Site.Params.imgurl -}}{{- .Lastmod.Format "2006-01-02T15:04:05" | safeHTML -}}" />
+  {{- $og_image := (or .Params.featured_image (.Resources.GetMatch "image" | default "/2023/12/29/658e16beb2c7b.webp")) -}}
+  <meta property="og:image" content="{{ $.Site.Params.imgurl }}{{ $og_image }}" />
+  <meta name="author" content="{{ or .Params.author $site_author }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@holeorg" />
+  <meta name="twitter:creator" content="@holeorg" />
+  <meta name="twitter:title" content="{{ if not .IsHome }}{{ .Title }} - {{- end -}}{{ site.Title }}" />
+  <meta name="twitter:image" content="{{ $.Site.Params.imgurl }}{{ $og_image }}" />
+  {{- $main := resources.Get "css/main.css" -}}
+  {{- $custom := resources.Get "css/custom.css" -}}
+  {{- $uikit := resources.Get "css/uikit.css" -}}
+  
+  <!-- 合并并压缩 CSS 文件 -->
+  {{- $css := slice $main $custom $uikit | resources.Concat "css/main.css" | minify -}}
+  
+  <!-- 使用 resources.Copy 将文件输出到 public/assets/css/ -->
+  {{- $cssCopied := $css | resources.Copy "assets/css/main.min.css" -}}
+  
+  <!-- 在页面中引用该 CSS 文件 -->
+  <link rel="preload" as="style" href="{{ $cssCopied.Permalink }}" />
+  <link rel="stylesheet" href="{{ $cssCopied.Permalink }}" />
+  
+  <!-- 加载并压缩 JS 文件 -->
+  {{- $listJs := resources.Get "js/list.js" -}}
+  {{- $js := $listJs | minify -}}
+  
+  <!-- 使用 resources.Copy 将文件输出到 public/assets/js/ -->
+  {{- $jsCopied := $js | resources.Copy "assets/js/list.min.js" -}}
+  
+  <!-- 你可以选择在页面中引用 JS 文件，但根据你的需求你也可以省略这个引用 -->
+
+  
+
+{{- if or .Params.math .Site.Params.math -}}
+{{- partial "math.html" . -}}
+{{- end }}
+{{- partial "APlayer.html" . -}}
+<!-- Favicon -->
+<link rel="icon" href="{{ `favicon-v1.ico` | absURL }}" />
+<link rel="apple-touch-icon" href="{{ `apple-touch-icon.png` | absURL }}" />
+<!-- Generator -->
+{{- hugo.Generator -}}
+<!-- RSS -->
+{{- range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}" />
+{{- end -}}
+<!-- Misc -->
+{{ if or hugo.IsProduction (eq site.Params.env "production") }}
+  {{ template "_internal/schema.html" . }}
+{{- end -}}
+
+<script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-7-M/uikit/3.11.1/js/uikit.min.js"></script>
+<script src="https://gcore.jsdelivr.net/gh/mrxie68/webCDN@main/webtwikoo/twikoomr.all.min.js" ></script>
+<script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-7-M/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://gcore.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
+<script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-7-M/uikit/3.11.1/js/uikit-icons.min.js" async></script>
+{{ if .IsHome }}
+<script src="{{ $jsCopied.Permalink }}" defer></script>
+{{- end -}}
+<script src="https://gcore.jsdelivr.net/npm/leancloud-storage@4.15.2/dist/av-min.js"></script>
+<script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-7-M/web-animations/2.3.2/web-animations.min.js" async></script>
+<script>var meting_api = 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TGN9VNR3TD" async></script>
+{{ partial "heads.html" . }}
+</head>

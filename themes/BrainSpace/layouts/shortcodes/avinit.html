@@ -1,0 +1,72 @@
+<script>
+  const submittedDataElement = document.getElementById("submittedData");
+  const submissionStatusElement = document.getElementById("submissionStatus");
+
+  function displaySubmittedData(data) {
+    submittedDataElement.innerHTML = "";
+    const lastThreeData = data.slice(-3).reverse(); // Get the last three items and reverse the order
+    lastThreeData.forEach(formData => {
+      const formDataElement = document.createElement("p");
+      formDataElement.textContent = `博客名称：${formData.name}，博客地址：${formData.url}`;
+      formDataElement.target = "_blank";
+      submittedDataElement.appendChild(formDataElement);
+    });
+  }
+
+  function showSubmissionStatus(message, success = true) {
+    submissionStatusElement.textContent = message;
+    submissionStatusElement.style.color = success ? "green" : "red";
+  }
+
+  function fetchSubmittedData() {
+    const Blog = AV.Object.extend('Blog');
+    const query = new AV.Query(Blog);
+    query.find().then(results => {
+      const data = results.map(result => result.toJSON());
+      displaySubmittedData(data);
+    }).catch(error => {
+      console.log('获取已提交数据失败：', error);
+    });
+  }
+
+  fetchSubmittedData();
+
+  const blogForm = document.getElementById("blogForm");
+  blogForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const blogName = document.getElementById("blogName").value;
+    const blogUrl = document.getElementById("blogUrl").value;
+    const blogAvatar = document.getElementById("blogAvatar").value;
+    const blogIntro = document.getElementById("blogIntro").value; // 获取博客简介
+
+    const Blog = AV.Object.extend('Blog');
+    const blogObject = new Blog();
+
+    blogObject.set('name', blogName);
+    blogObject.set('url', blogUrl);
+    blogObject.set('avatar', blogAvatar);
+    blogObject.set('intro', blogIntro); // 将博客简介存储到数据库
+
+    try {
+      await blogObject.save();
+      console.log('提交信息成功，请耐心等待更新。');
+      document.getElementById("blogName").value = "";
+      document.getElementById("blogUrl").value = "";
+      document.getElementById("blogAvatar").value = "";
+      document.getElementById("blogIntro").value = ""; // 清空博客简介输入框
+      fetchSubmittedData();
+      showSubmissionStatus("提交信息成功，请耐心等待更新。", true);
+    } catch (error) {
+      console.log('博客信息提交失败，请重试。', error);
+      showSubmissionStatus("博客信息提交失败，请重试。", false);
+    }
+  });
+
+  const modalElement = document.getElementById("modal");
+  const scriptElement = document.currentScript;
+  modalElement.addEventListener("shown", function() {
+    scriptElement.remove();
+  });
+
+</script>

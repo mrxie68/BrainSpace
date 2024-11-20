@@ -1,0 +1,11 @@
+/* 
+body, a, button {
+  cursor: url("https://jsd.cdn.zzko.cn/gh/mrxie68/webCDN@main/webtwikoo/pointer.ico"), auto;
+}
+
+a:hover, button:hover {
+  cursor: url("https://jsd.cdn.zzko.cn/gh/mrxie68/webCDN@main/webtwikoo/link.ico"), auto;
+}
+.item div:hover {
+  cursor: url("https://jsd.cdn.zzko.cn/gh/mrxie68/webCDN@main/webtwikoo/pointer.ico"), auto;
+} */

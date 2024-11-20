@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{{- $.Scratch.Delete "bg_color" -}}<!---->
+{{- $.Scratch.Delete "social_list" -}}<!---->
+{{- $.Scratch.Delete "avatar_url" -}}<!---->
+{{- $color_map := dict "linen" "#fff" "wheat" "#f8f5d7" "gray" "#fbfbfb"
+"light" "#fff" -}}<!---->
+{{- $.Scratch.Set "bg_color" (index $color_map (site.Params.color | default
+(print "linen"))) -}}<!---->
+{{- $social_params := slice "twitter" "github" "instagram" "linkedin" "mastodon"
+"rss" -}}<!---->
+{{- range $social_params -}}<!---->
+{{- if isset site.Params . -}}<!---->
+{{- $.Scratch.Add "social_list" (slice .) -}}<!---->
+{{- end -}}<!---->
+{{- end -}}<!---->
+{{- if site.Params.avatar -}}<!---->
+{{- if in site.Params.avatar "http" -}}<!---->
+{{- $.Scratch.Set "avatar_url" site.Params.avatar -}}<!---->
+{{- else }}<!---->
+{{- $official_cdn := "https://www.gravatar.com/avatar/" -}}<!---->
+{{- $cdn := (site.Params.gravatarCdn | default $official_cdn) -}}<!---->
+{{- $md5 := (md5 site.Params.avatar) -}}<!---->
+{{- $avatar_url := print $cdn $md5 "?s=160&d=identicon" -}}<!---->
+{{- $.Scratch.Set "avatar_url" $avatar_url -}}<!---->
+{{- end -}}<!---->
+{{- end -}}<!---->
+{{- if .IsHome -}}<!--黑白页面-->
+{{- $customCSSStartDate := .Site.Params.customCSSStartDate | default "" -}}
+{{- $customCSSEndDate := .Site.Params.customCSSEndDate | default "" -}}
+{{- $currentDate := now.Format "2006-01-02" -}}
+{{- if and (ge $currentDate $customCSSStartDate) (le $currentDate $customCSSEndDate) -}}
+{{- partial "custom_css.html" . -}}
+{{- end -}}
+{{- end -}}
+<html class="not-ready text-sm lg:text-base" style="--bg: {{ $.Scratch.Get `bg_color` }}"
+  lang="{{- site.LanguageCode -}}">
+{{- partial "head.html" . -}}
+<body class="text-black duration-200 ease-out dark:text-white">
+  {{- partial "header.html" . -}}
+  {{- if eq .Type "post" -}}
+  <main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl2 px-8 pb-24 pt-16 dark:prose-invert uk-animation-slide-bottom-small"
+  style="border-radius: 15px;">
+  {{- else if eq .Layout "photo" -}}
+    <!-- 如果是 _default/ce.html 模板，使用这个布局 -->
+    <main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl2 px-8 pb-24  dark:prose-invert uk-animation-slide-bottom-small"
+          style="border-radius: 15px;max-width: 100%;padding-left: 0rem;padding-right: 0rem;">
+  {{- else if eq .Layout "comment-movie" -}}
+  <!-- 如果是 _default/ce.html 模板，使用这个布局 -->
+  <main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl2 px-8 pb-24  dark:prose-invert uk-animation-slide-bottom-small"
+        style="border-radius: 15px;max-width: 100%;padding-left: 0rem;padding-right: 0rem;">
+{{- else -}}
+  <main class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl  px-8 pb-24 pt-17 dark:prose-invert uk-animation-slide-bottom-small">
+  {{- end -}}
+  {{- block "main" . -}}{{- end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{{- /* Generate RSS v2 with a hidden "Easter egg" for fun. */ -}}
+{{- /* Upstream Hugo bug - RSS dates can be in future: https://github.com/gohugoio/hugo/issues/3918 */ -}}
+
+{{- $page_context := cond .IsHome site . -}}
+{{- $pages := $page_context.RegularPages -}}
+
+{{- $postPages := where $pages "Section" "post" -}}
+{{- if .IsHome }}
+  {{- $pages = $postPages -}}
+{{- else }}
+  {{- $pages = $postPages | append (slice .) -}}
+{{- end -}}
+
+{{- /* Set a fixed limit of 15 items if no limit is specified in site config */ -}}
+{{- $limit := cond (ge site.Config.Services.RSS.Limit 1) site.Config.Services.RSS.Limit 15 -}}
+{{- $pages = $pages | first $limit -}}
+
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if ne .Title site.Title }}{{ with .Title }}{{ . }} | {{- end -}}{{- end -}}{{ site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    {{- with .OutputFormats.Get "RSS" }}
+      {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{ end -}}
+    <description>
+      {{ .Description | default site.Title }} 
+    </description>
+    {{- with site.LanguageCode }}<language>{{ . }}</language>{{ end -}}
+    {{- with site.Copyright }}<copyright>{{ replace (replace . "{year}" now.Year) "&copy;" "©" | plainify }}</copyright>{{ end -}}
+    {{- if not .Date.IsZero }}<lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end -}}
+    {{- if .Scratch.Get "og_image" }}
+    <image>
+      <url>{{ .Scratch.Get "og_image" }}</url>
+      <title>{{ .Title | default site.Title }}</title>
+      <link>{{ .Permalink }}</link>
+    </image>
+    {{ end -}}
+    {{ range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
+      <summary type="html">{{ .Summary | html }}</summary>
+      <description>{{ .Content 
+                      | replaceRE "(?s)<div[^>]*>.*?</div>" "" 
+                      | replaceRE "(?s)<script[^>]*>.*?</script>" "" 
+                      | replaceRE "(?s)<style[^>]*>.*?</style>" "" 
+                      | replaceRE "(?i)</?(div|script|style)[^>]*>" "" 
+                      | html }}</description>
+    </item>
+    {{- end -}}
+  </channel>
+</rss>

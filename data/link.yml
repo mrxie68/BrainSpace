@@ -1,0 +1,33 @@
+links:
+
+  - link: "https://www.brain-hole.org"
+    image: "https://www.brain-hole.org/logo.webp"
+    text: "BrainSpace"
+    description: "探索灵感 记录想法"
+    target: "_blank"
+    
+  - link: "https://veryjack.com"
+    image: "https://bu.dusays.com/2023/10/11/652621ea4624d.jpg"
+    text: "Jack’s Space"
+    description: "VeryJack 的个人空间"
+    target: "_blank"
+
+  - link: "https://bokebo.com"
+    image: "https://bu.dusays.com/2023/10/11/652621c4b2531.png"
+    text: "BOKEBO"
+    description: "愉悦理性又不轻浮"
+    target: "_blank"
+
+linkss:
+
+  - link: "/" 
+    image: "https://bu.dusays.com/2024/09/29/66f952f0c2520.webp"
+    text: "回忆航线"
+    description: "喜欢捣鼓的博主"
+    target: "_blank"
+
+  - link: "/" 
+    image: "https://bu.dusays.com/2024/09/29/66f952f0c2520.webp"
+    text: "dot dot dot"
+    description: "..."
+    target: "_blank"

@@ -1,0 +1,57 @@
+
+<style>
+  .blur-container {
+      position: relative;
+      overflow: hidden;
+  }
+
+  .blur-container .fluent {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      object-fit: cover;
+      filter: blur(55px);
+      z-index: 0;
+      overflow: visible;
+      -webkit-backdrop-filter: blur(3rem);
+  }
+
+  .blur-container {
+      position: relative;
+      z-index: 1;
+  }
+  .blurcss{
+    margin-top: 12px !important;
+    padding-left: 12px !important;
+  }
+  @media (max-width: 950px){
+    .blurcss{
+    padding-left: 30px !important;
+    }
+  }
+</style>
+
+<div class="blurcss uk-width-1-{{ .Get "auth" }}@s ">
+  <blockquote class="blur-container uk-card  uk-border-radius uk-accordion uk-box-shadow-hover-small" style=" padding: 30px 30px;" uk-scrollspy=" cls: uk-animation-fade; delay: 70">
+    {{ if .IsNamedParams }}
+      {{ $auicon := .Get "auicon" | safeHTMLAttr }}
+      {{ $auimg := .Get "auimg" | safeURL }}
+      <p  style="text-align: left; font-size: 16px; font-weight: 800; font-style: normal; ">{{ .Get "auth1" }}</p>
+      {{ if ne $auimg "" }}
+      <iconify-icon class="fluent" icon="fluent-emoji-flat:{{ $auimg }}" width="78" height="78"></iconify-icon>
+      {{- end -}}
+      <p class="uk-text-normal " style="font-size: 1.1rem; margin: 0.5em 0em !important; ; font-style: normal;    left: 0px;
+      position: relative;color: var(--tw-prose-p) !important;">
+        {{ if ne $auicon "" }}
+          <iconify-icon icon="fluent-emoji-flat:{{ $auicon }}" style="overflow: visible; left: 0px; top: 4px; position: relative;" width="20" height="20"></iconify-icon>
+        {{- end -}}
+        <span style="font-size: 16px;">{{ .Inner | safeHTML }}</span>
+      </p>
+      <p  style="text-align: right; font-size: 16px; ">{{ .Get "author" }}</p>
+    {{- end -}}
+  </blockquote>
+</div>
+
+
+
+

@@ -1,0 +1,8 @@
+#通用envId
+envId: "https://mrixie6-twikoo.hf.space/"
+
+#/class/space/空间页面配置
+spacepath: "/class/space/" #引用数据路径 默认空间数据页面 /class/shole/
+
+#首页最新留言
+messagepath: "/class/message/" 

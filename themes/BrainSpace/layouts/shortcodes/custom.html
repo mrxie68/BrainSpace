@@ -1,0 +1,89 @@
+{{- $type := .Get "type" -}}
+
+{{- if eq $type "album" -}}
+<div>  <!--回忆页回忆册-->
+    <div class="uk-card uk-card-default uk-border-radius uk-box-shadow-hover-small" style="
+    min-height: 435px;
+">
+        <div class="uk-card-media-top">
+            <img src="{{ $.Site.Params.imgurl }}{{ .Get "mainImage" }}" width="1800" height="1200" alt="" style="border-radius:15px 15px 0 0;height: 220px;">
+        </div>
+        <img class="title-sed uk-box-shadow-hover-small" width="35" height="35" src="{{ $.Site.Params.imgurl }}{{ .Get "avatarImage" }}" alt="Avatar" style="border-radius: 50%;">
+        <div class="uk-card-body">
+            <h3 class="uk-card-title" style="margin-top: 0em;">{{ .Get "title" }}</h3>
+            <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 3;
+        ">{{ .Get "description" }}</p>
+            <button class="uk-button uk-button-secondary uk-width-1-1 uk-border-radiulzl uk-position-bottom-center" onclick="window.location.href='{{ .Get "buttonLink" }}'" style="
+            width: 80%;
+            margin: 15px 0px;
+        ">{{ .Get "buttontitle" }}</button>
+        </div>
+    </div>
+</div>
+{{- else if eq $type "comment" -}}  <!--顶部标语-->
+<div class="list-itemq uk-box-shadow-hover-small" style="overflow: hidden; border-radius: 25px;">
+    <article id="uk-card12wwdx" class="uk-card uk-card-body uk-width-1-1@m" role="comment" style="border-radius: 25px; border: 0px dashed #7a7a7a;">
+        <div class="uk-grid-medium uk-flex-middle" uk-grid style="padding: 0px 0px 0px 30px;">
+            <div class="uk-width-auto" style="padding-left: 0px;z-index: 1;">
+                <img class="uk-comment-avatar" src="{{ .Get "avatarImage" }}" width="80" height="80" alt="" style="border-radius: 23px;">
+            </div>
+            <ul class="uk-comment-title uk-margin-remove uk-card uk-card-body" style="padding: 0px 0px 0px 30px;">
+                <h4 style="margin-top: 0px;">
+                    <a class="uk-link-reset" href="{{ .Get "link" }}" alt="suoluetu" style="font-weight: 800;">{{ .Get "title" }}</a>
+                </h4>
+                <li>
+                    <h5 style="margin: 0px; color: var(--tw-prose-p); font-size: 16px;">
+                        {{ .Get "description" }}
+                    </h5>
+                </li>
+            </ul>
+        </div>
+    </article>
+</div>
+{{- else if eq $type "comment-like" -}}  <!--赞-->
+
+<div class=" {{ .Get "likeclass" }}">
+    <button class="likeButton" data-page-path="{{ .Get "likeurl" }}" data-liked-icon="fluent-emoji:red-heart" data-unliked-icon="solar:heart-angle-bold">
+        <iconify-icon icon="solar:heart-angle-bold" width="1.8rem" height="1.8rem" style="margin-bottom: -7px;"></iconify-icon>
+        Like 
+      </button> 
+      <span class="likeCount">0</span>
+
+{{- else if eq $type "comment-link" -}}  <!--link友链-->
+
+{{ $links := .Site.Data.link.links }}
+
+{{ range $links }}
+  <div>
+    <a href="{{ .link }}" class="box" target="{{ .target }}" style="text-decoration: none; display: flex; flex-direction: column; align-items: center;">
+      <img src="{{ .image }}" style="width: 65px; border-radius: 50%; padding:.2rem; background: var(--tw-prose-invert-gx); height: auto">
+      <div class="additional-text">{{ .text }}</div>
+      <div class="box1">
+        <p style="margin: 1px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; white-space: normal;">
+          {{ .description }}
+        </p>
+      </div>
+    </a>
+  </div>
+{{- end -}}
+
+{{- else if eq $type "comment-links" -}}  <!--link友链-->
+
+{{ $links := .Site.Data.link.linkss }}
+
+{{ range $links }}
+  <div>
+    <a href="{{ .link }}" class="box" target="{{ .target }}" style="text-decoration: none; display: flex; flex-direction: column; align-items: center;">
+      <img src="{{ .image }}" style="width: 65px; border-radius: 50%; padding:.2rem; background: var(--tw-prose-invert-gx); height: auto">
+      <div class="additional-text">{{ .text }}</div>
+      <div class="box1">
+        <p style="margin: 1px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; white-space: normal;">
+          {{ .description }}
+        </p>
+      </div>
+    </a>
+  </div>
+{{- end -}}
+
+
+{{- end -}}

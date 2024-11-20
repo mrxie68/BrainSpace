@@ -1,0 +1,29 @@
+{{ $images := slice }}
+{{- $width := .Get "width" | default "1800" }}
+{{- $height := .Get "height" | default "1200" }}
+{{- $nolink := .Get "nolink" | default "false" }}
+{{- $pt := .Get "pt" | default "0" }}
+
+{{- if .Params.imgurl1 }}{{ $images = $images | append .Params.imgurl1 }}{{- end -}}
+{{- if .Params.imgurl2 }}{{ $images = $images | append .Params.imgurl2 }}{{- end -}}
+{{- if .Params.imgurl3 }}{{ $images = $images | append .Params.imgurl3 }}{{- end -}}
+{{- if .Params.imgurl4 }}{{ $images = $images | append .Params.imgurl4 }}{{- end -}}
+{{- if .Params.imgurl5 }}{{ $images = $images | append .Params.imgurl5 }}{{- end -}}
+{{- if .Params.imgurl6 }}{{ $images = $images | append .Params.imgurl6 }}{{- end -}}
+
+<div class="uk-child-width-1-2@s uk-child-width-1-{{ .Get "width_suffix" | default "1" }}@m zhao-img" uk-grid="masonry: pack" uk-lightbox="animation: fade" uk-scrollspy="target:.uk-inline; cls: uk-animation-fade; delay: 20">
+  {{- range $images }}
+  <div style="display: flex; justify-content: center; padding-bottom: 0.8rem; margin-top: 0px;padding-top: {{ $pt }}px;">
+      {{- if eq $nolink "true" }}
+          <img src="{{ $.Site.Params.imgurl }}{{ . }}" width="{{ $width }}" height="{{ $height }}" alt="">
+      {{- else }}
+          <a class="uk-inline" href="{{ $.Site.Params.imgurl }}{{ . }}" data-caption="">
+              <img src="{{ $.Site.Params.imgurl }}{{ . }}" width="{{ $width }}" height="{{ $height }}" alt="">
+          </a>
+      {{- end }}
+  </div>
+  {{- end }}
+</div>
+
+
+

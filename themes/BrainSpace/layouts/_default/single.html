@@ -1,0 +1,227 @@
+
+{{ define "main" }}
+
+
+<article>
+
+  <header class="mb-20">
+    <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
+
+    {{ if ne .Type "page" }}
+    <div class="text-sm opacity-60">
+      {{ if .Date }}
+
+      <span class="tag-list">
+        <iconify-icon icon="solar:calendar-bold-duotone" width="1.3em" height="1.3em" style="margin-right: 4px;"></iconify-icon>
+        <time>{{ .Date | time.Format "2006年1月2日 15:04" }}</time>
+    </span>
+      {{- end -}}<!---->
+      {{ $single_author := or .Params.Author site.Author.name }}
+      <!---->
+      {{ if $single_author }}
+        <span class="tag-list">
+          <iconify-icon icon="solar:user-id-bold-duotone" width="1.4em" height="1.4em" style="margin-right: 4px;"></iconify-icon>
+          {{ $single_author }}
+      </span>
+        {{- end -}}
+        <span class="tag-list1">
+          <iconify-icon icon="solar:keyboard-bold-duotone" width="1.5em" height="1.5em" style="margin-right: 4px;"></iconify-icon>
+          本文共：{{ .WordCount }} 字
+      </span>
+      <!-- 使用图标表示阅读需要的时间 -->
+      <span class="tag-list1">
+        <iconify-icon icon="solar:mouse-bold-duotone" width="1.3em" height="1.3em" style="margin-right: 4px;"></iconify-icon>
+          阅读需要：{{ .ReadingTime }} 分钟
+      </span>
+      <span class="tag-list1">
+        <iconify-icon icon="solar:chat-square-like-bold-duotone" width="1.3em" height="1.3em" style="margin-right: 4px;"></iconify-icon>
+        <a href="#twikoo"><span id="comment-count">加载中...</span></a>
+      </span>
+      </div>
+      {{- end -}}
+      </div>
+  </header>
+
+<!-- {{ if .TableOfContents }}
+  <div class="table-of-contents">
+    {{ .TableOfContents }}
+  </div>
+{{- end -}}
+  <ul uk-accordion class="uk-border-radius">
+    <li class="uk-open" >
+        <a class="uk-accordion-title " href="#">目录</a>
+        <div class="uk-accordion-content">
+          <ul>
+            {{ $content := .Page.Content | markdownify }}
+            {{ $h3Titles := findRE "<h3.*?>(.+?)</h3>" $content }}
+            {{ with $h3Titles }}
+              {{ range $index, $title := . }}
+                <a href="#toc{{ $index }}">{{ . | plainify }}</a>
+              {{- end -}}
+            {{- end -}}
+          </ul>
+        </div>
+    </li>
+ </ul>-->
+
+  <section class="my-section" style="text-align: justify;">{{ .Content }}</section>
+  <!-- {{ if .Params.tags }}
+标签
+  <footer class="mt-12 flex flex-wrap">
+    {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="{{ $href }}"
+      >{{ . }}</a
+    >
+    {{- end -}}
+  </footer>
+  {{- end -}} -->
+
+  <!-- Post Nav -->
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
+  <div class="uk-inline uk-container uk-flex uk-flex-center uk-flex-middle" style="
+  padding: 5rem 0px 0px;
+">
+    <button class="uk-button uk-button-primary uk-border-radiulzl" type="button">赞助支持</button>
+    <div class="uk-card uk-card-body uk-card-default uk-border-radius"  uk-drop="pos: top-center; animation: uk-animation-slide-top-small; animate-out: true; duration: 300;offset: 10" style="padding: 10px 15px;">
+      <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-slide-top-small, uk-animation-slide-top-small">
+      <li><a href="#">微信赞助</a></li>
+      <li><a href="#">支付宝赞助</a></li>
+  </ul>
+  <ul class="uk-switcher uk-margin" style="display: flex;justify-content: center;align-items: center; margin-top: 0px!important;">
+      <li style="
+      padding: 0px;
+  "><img src="https://bu.dusays.com/2023/08/26/64e9c185ce5bb.webp" alt="Image 1" ></li>
+      <li style="
+      padding: 0px;
+  "><img src="https://bu.dusays.com/2023/08/26/64e9c185ce5bb.webp" alt="Image 2"></li>
+  </ul>
+    </div>
+</div>
+
+
+
+
+
+
+  {{ if eq .Type "post" }}
+  <div class="post-copyright">
+    <div class="post-copyright__notice">
+      <div class="post-author" style="
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    font-weight: 600;
+    justify-content: space-around;
+      ">
+        <!-- 头像代码 -->
+        <img class="my-0 aspect-square w-15 rounded-full !bg-black/5  dark:!bg-black/80" src="{{ $.Site.Params.imgurl }}{{ .Site.Params.avatar }}" alt="头像" style="
+          padding: 0.2em;
+          background-color: var(--tw-prose-invert-gx)!important;
+        " />
+      <span class="post-author-meta" style="color: #49b1f5; font-weight: bold; padding-left: 1rem;">
+        版权声明&ensp;
+      </span>
+      <span class="post-author-info"style="
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: row;
+  ">
+       
+        <!-- 使用 Hugo 的 with 函数检查是否有定义参数 blogTitle -->
+        {{ with .Params.blogTitle }}
+          <!-- 如果有定义参数，则显示红色文本 -->
+
+          <span>{{ . }}！</span> 
+          
+          <a href="mailto:admin@brain-hole.org">
+            <iconify-icon icon="fxemoji:loveletter" width="1.3em" height="1.3em" style=" margin: 0px 0px -3px 0px;"></iconify-icon>
+          </a>
+        {{ else }}
+        本博客所有文章除特别声明外，均采用
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" style="
+        font-weight: 600;
+    ">CC BY-NC-SA 4.0</a> 许可协议。
+          <!-- 否则使用默认值 "Brain hole" -->
+          <a href="/" target="_blank" style="
+          font-weight: 600;
+      ">转载请注明来自 Brain hole！</a>
+        {{- end -}}
+      </div>
+      </span>
+  </div>
+  </div>
+  {{- end -}}
+  {{ if and (gt (len $pages) 1) (in $pages . ) }}
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    {{ with $pages.Next . }}
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="{{ .Permalink }}"
+      ><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
+    >
+    {{- end -}}<!---->
+    {{ with $pages.Prev . }}
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="{{ .Permalink }}"
+      ><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
+    >
+    {{- end -}}
+  </nav>
+  {{- end -}}
+
+  {{ if .Params.enableComments }}
+  <div id="tcomment"></div>
+  <script>
+    twikoo.init({
+      envId: '{{ .Site.Data.twikoo.envId }}', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+      el: '#tcomment', // 容器元素
+      // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+      // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+      // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+    });
+  </script>
+{{- end -}}
+
+  <!-- Disqus -->
+
+
+  <!-- GraphComment -->
+  <!-- {{ if and site.Params.graphCommentId (not (eq .Params.comments false)) }}
+  <div class="mt-24" id="graphcomment"></div>
+  <script type="text/javascript">
+    var __semio__params = {
+      graphcommentId: '{{ site.Params.graphCommentId  }}',
+      behaviour: {
+        //  uid: "...",
+      },
+      // configure your variables here
+    };
+    function __semio__onload() {
+      __semio__gc_graphlogin(__semio__params);
+    }
+
+    (function () {
+      var gc = document.createElement('script');
+      gc.type = 'text/javascript';
+      gc.async = true;
+      gc.onload = __semio__onload;
+      gc.defer = true;
+      gc.src =
+        'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
+      (
+        document.getElementsByTagName('head')[0] ||
+        document.getElementsByTagName('body')[0]
+      ).appendChild(gc);
+    })();
+  </script>
+  {{- end -}} -->
+</article>
+</div>
+{{- end -}}
+
