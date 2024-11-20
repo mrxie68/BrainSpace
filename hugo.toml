@@ -1,4 +1,4 @@
-baseURL = 'https://www.brain-hole.org'  # 网站的基本URL
+baseURL = 'http://test.brain-hole.org'  # 网站的基本URL
 languageCode = 'zh'  # 网站使用的语言代码，这里是中文
 title = 'BrainSpace'  # 网站标题
 theme = 'BrainSpace'  # 使用的主题名称
