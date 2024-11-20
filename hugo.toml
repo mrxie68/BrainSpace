@@ -56,7 +56,7 @@ customCSSEndDate = "2024-10-28"  # 结束日期
 
   [[menu.main]]
     identifier = "gallery"
-    name = "回忆"
+    name = "相册"
     url = "/class/gallery/"
     weight = 20  # 排序权重
 
@@ -77,6 +77,12 @@ customCSSEndDate = "2024-10-28"  # 结束日期
     name = "关于"
     url = "/class/about/"
     weight = 50  # 排序权重
+
+  [[menu.main]]
+    identifier = "download"
+    name = "下载"
+    url = "https://github.com/mrxie68/BrainSpace"
+    weight = 60  # 排序权重    
 
 [minify]
   disableCSS = false
