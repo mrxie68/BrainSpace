@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客搭建 on BrainSpace</title><link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><description>Recent content in 博客搭建 on BrainSpace</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 16 Nov 2024 16:22:42 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>BrainSpace DIY部分展示</title><link>http://localhost:1313/post/brainspacediy/</link><pubDate>Sat, 16 Nov 2024 16:22:42 +0800</pubDate><guid>http://localhost:1313/post/brainspacediy/</guid><description>&lt;h4 class="uk-heading-bullet">常用&lt;/h4>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客搭建 on BrainSpace</title><link>https://test.brain-hole.org/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><description>Recent content in 博客搭建 on BrainSpace</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 16 Nov 2024 16:22:42 +0800</lastBuildDate><atom:link href="https://test.brain-hole.org/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>BrainSpace DIY部分展示</title><link>https://test.brain-hole.org/post/brainspacediy/</link><pubDate>Sat, 16 Nov 2024 16:22:42 +0800</pubDate><guid>https://test.brain-hole.org/post/brainspacediy/</guid><description>&lt;h4 class="uk-heading-bullet">常用&lt;/h4>
 &lt;div class="uk-text-center uk-card-body">
  &lt;a href="" class="uk-icon-button uk-margin-small-right">&lt;iconify-icon icon="twemoji:airplane">&lt;/iconify-icon>&lt;/a>
  &lt;a href="" class="uk-icon-button uk-margin-small-right" uk-icon="facebook">&lt;/a>
@@ -156,7 +156,7 @@
  
  
  
- &lt;p style="text-align: left; font-size: 16px; font-weight: 800; font-style: normal; ">经典对白&lt;/p></description></item><item><title>markdown基本语法展示</title><link>http://localhost:1313/post/markdown/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>http://localhost:1313/post/markdown/</guid><description>&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="http://localhost:1313/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
+ &lt;p style="text-align: left; font-size: 16px; font-weight: 800; font-style: normal; ">经典对白&lt;/p></description></item><item><title>markdown基本语法展示</title><link>https://test.brain-hole.org/post/markdown/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>https://test.brain-hole.org/post/markdown/</guid><description>&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="https://test.brain-hole.org/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
 &lt;h1 id="一级标题">一级标题&lt;/h1>
 &lt;p>这是一个一级标题，通常用于文章或页面的主标题。它在内容中占据最重要的位置。&lt;/p>
 &lt;h2 id="二级标题">二级标题&lt;/h2>
@@ -235,4 +235,4 @@
 &lt;p>这是一个显示公式：
 $$
 a^2 + b^2 = c^2
-$$&lt;/p></description></item><item><title>常用的 Hugo 命令</title><link>http://localhost:1313/post/marticle/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>http://localhost:1313/post/marticle/</guid><description>Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。</description></item></channel></rss>
+$$&lt;/p></description></item><item><title>常用的 Hugo 命令</title><link>https://test.brain-hole.org/post/marticle/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid>https://test.brain-hole.org/post/marticle/</guid><description>Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。</description></item></channel></rss>

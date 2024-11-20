@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BrainSpace</title><link>http://localhost:1313/</link><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><description>
-BrainSpace</description><language>zh</language><lastBuildDate>Sun, 17 Nov 2024 06:33:00 +0800</lastBuildDate><item><title>BrainSpace DIY部分展示</title><link>http://localhost:1313/post/brainspacediy/</link><pubDate>Sat, 16 Nov 2024 16:22:42 +0800</pubDate><guid isPermaLink="true">http://localhost:1313/post/brainspacediy/</guid><summary type="html">&lt;h4 class="uk-heading-bullet">常用&lt;/h4>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BrainSpace</title><link>https://test.brain-hole.org/</link><atom:link href="https://test.brain-hole.org/index.xml" rel="self" type="application/rss+xml"/><description>
+BrainSpace</description><language>zh</language><lastBuildDate>Sun, 17 Nov 2024 06:33:00 +0800</lastBuildDate><item><title>BrainSpace DIY部分展示</title><link>https://test.brain-hole.org/post/brainspacediy/</link><pubDate>Sat, 16 Nov 2024 16:22:42 +0800</pubDate><guid isPermaLink="true">https://test.brain-hole.org/post/brainspacediy/</guid><summary type="html">&lt;h4 class="uk-heading-bullet">常用&lt;/h4>
 &lt;div class="uk-text-center uk-card-body">
 &lt;a href="" class="uk-icon-button uk-margin-small-right">&lt;iconify-icon icon="twemoji:airplane">&lt;/iconify-icon>&lt;/a>
 &lt;a href="" class="uk-icon-button uk-margin-small-right" uk-icon="facebook">&lt;/a>
@@ -140,7 +140,7 @@ padding-left: 30px !important;
 &lt;p>nolink=&amp;ldquo;true&amp;rdquo; 将无法点击 默认可以点击 width_suffix=&amp;ldquo;4&amp;quot;一行显示的图片数量 pt=&amp;ldquo;0&amp;rdquo; 顶部高度&lt;/p>
 &lt;h4 class="uk-heading-bullet">音乐&lt;/h4>
 &lt;p>详细使用方法 参考：meting-js&lt;/p>
-&lt;p>&lt;meting-js server="tencent" type="song" id="003FYhal2hH32y" list-folded=true />&lt;/meting-js>&lt;/p></description></item><item><title>BrainSpace基本使用文档</title><link>http://localhost:1313/post/1/</link><pubDate>Sun, 17 Nov 2024 06:33:00 +0800</pubDate><guid isPermaLink="true">http://localhost:1313/post/1/</guid><summary type="html">确保已经正确安装 Hugo（具体安装步骤请参考 Hugo 官方文档）。在终端中新建一个文件夹作为博客项目目录，并进入该目录。然后运行以下命令以生成基本目录结构，下面将以myblog演示：</summary><description>&lt;h4 class="uk-heading-bullet">安装使用&lt;/h4>
+&lt;p>&lt;meting-js server="tencent" type="song" id="003FYhal2hH32y" list-folded=true />&lt;/meting-js>&lt;/p></description></item><item><title>BrainSpace基本使用文档</title><link>https://test.brain-hole.org/post/1/</link><pubDate>Sun, 17 Nov 2024 06:33:00 +0800</pubDate><guid isPermaLink="true">https://test.brain-hole.org/post/1/</guid><summary type="html">确保已经正确安装 Hugo（具体安装步骤请参考 Hugo 官方文档）。在终端中新建一个文件夹作为博客项目目录，并进入该目录。然后运行以下命令以生成基本目录结构，下面将以myblog演示：</summary><description>&lt;h4 class="uk-heading-bullet">安装使用&lt;/h4>
 &lt;p>确保已经正确安装 Hugo（具体安装步骤请参考 Hugo 官方文档）。在终端中新建一个文件夹作为博客项目目录，并进入该目录。然后运行以下命令以生成基本目录结构，下面将以myblog演示：&lt;/p>
 &lt;p>上述命令会在当前路径中创建 Hugo 的默认目录结构。&lt;/p>
 &lt;p>将主题 BrainSpace 的文件夹拷贝到 myblog/themes 文件夹下。然后将主题文件夹中的 theme.toml 配置文件内容复制到博客根目录的 hugo.toml 文件中，并移除其中的所有注释。&lt;/p>
@@ -207,13 +207,13 @@ padding-left: 30px !important;
 &lt;td>"本教程介绍 Hugo 的安装与配置方法。"&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>BrainSpace yml文件配置教程</title><link>http://localhost:1313/post/2/</link><pubDate>Sat, 16 Nov 2024 15:19:42 +0800</pubDate><guid isPermaLink="true">http://localhost:1313/post/2/</guid><summary type="html">&lt;h4 class="uk-heading-bullet">友链&lt;/h4>
+&lt;/table></description></item><item><title>BrainSpace yml文件配置教程</title><link>https://test.brain-hole.org/post/2/</link><pubDate>Sat, 16 Nov 2024 15:19:42 +0800</pubDate><guid isPermaLink="true">https://test.brain-hole.org/post/2/</guid><summary type="html">&lt;h4 class="uk-heading-bullet">友链&lt;/h4>
 &lt;h4 class="uk-heading-bullet">Twikoo评论&lt;/h4>
 &lt;p>主题仅对Twikoo做了适配，使用评论需自行参考官方教程搭建。需要配置data文件夹下的twikoo.yml即可启用评论。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">envId&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;https://xxx.xxx.org/&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></summary><description>&lt;h4 class="uk-heading-bullet">友链&lt;/h4>
 &lt;h4 class="uk-heading-bullet">Twikoo评论&lt;/h4>
-&lt;p>主题仅对Twikoo做了适配，使用评论需自行参考官方教程搭建。需要配置data文件夹下的twikoo.yml即可启用评论。&lt;/p></description></item><item><title>markdown基本语法展示</title><link>http://localhost:1313/post/markdown/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid isPermaLink="true">http://localhost:1313/post/markdown/</guid><summary type="html">&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="http://localhost:1313/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
+&lt;p>主题仅对Twikoo做了适配，使用评论需自行参考官方教程搭建。需要配置data文件夹下的twikoo.yml即可启用评论。&lt;/p></description></item><item><title>markdown基本语法展示</title><link>https://test.brain-hole.org/post/markdown/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid isPermaLink="true">https://test.brain-hole.org/post/markdown/</guid><summary type="html">&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="https://test.brain-hole.org/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
 &lt;h1 id="一级标题">一级标题&lt;/h1>
 &lt;p>这是一个一级标题，通常用于文章或页面的主标题。它在内容中占据最重要的位置。&lt;/p>
 &lt;h2 id="二级标题">二级标题&lt;/h2>
@@ -292,7 +292,7 @@ padding-left: 30px !important;
 &lt;p>这是一个显示公式：
 $$
 a^2 + b^2 = c^2
-$$&lt;/p></summary><description>&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="http://localhost:1313/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
+$$&lt;/p></summary><description>&lt;p>&lt;em>由于使用了 UIkit 可能有少部分markdown语法不兼容 或者已被破坏 如果需要请自行修改文件&lt;/em> 其余一些样式需要自行参考&lt;a href="https://test.brain-hole.org/post/BrainSpacediy">DIY语法&lt;/a> 或者 &lt;a href="https://getuikit.com/">UIkit&lt;/a>&lt;/p>
 &lt;h1 id="一级标题">一级标题&lt;/h1>
 &lt;p>这是一个一级标题，通常用于文章或页面的主标题。它在内容中占据最重要的位置。&lt;/p>
 &lt;h2 id="二级标题">二级标题&lt;/h2>
@@ -375,7 +375,7 @@ f(n)
 $$&lt;/p>
 &lt;p>$$
 x=a_0 + \cfrac {1^2}{a_1 + \cfrac {2^2}{a_2 + \cfrac {3^2}{a_3 + \cfrac {4^2}{a_4 + &amp;hellip;}}}}
-$$&lt;/p></description></item><item><title>常用的 Hugo 命令</title><link>http://localhost:1313/post/marticle/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid isPermaLink="true">http://localhost:1313/post/marticle/</guid><summary type="html">Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。</summary><description>&lt;p>Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。然而对于我这小白来说比hexo上手难得多。所以把一些常用命令记下来用。&lt;/p>
+$$&lt;/p></description></item><item><title>常用的 Hugo 命令</title><link>https://test.brain-hole.org/post/marticle/</link><pubDate>Fri, 15 Nov 2024 14:33:00 +0800</pubDate><guid isPermaLink="true">https://test.brain-hole.org/post/marticle/</guid><summary type="html">Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。</summary><description>&lt;p>Hugo是一个流行的静态网站生成器，旨在帮助开发者快速构建高性能的网站。它是基于 Go 语言开发的，具有速度快、易于使用和灵活的特点。然而对于我这小白来说比hexo上手难得多。所以把一些常用命令记下来用。&lt;/p>
 &lt;h3 class="uk-heading-bullet">常用命令&lt;/h3>
 &lt;!--&lt;h3>首次推送&lt;/h3>
 ```js
