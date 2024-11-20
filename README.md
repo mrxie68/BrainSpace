@@ -23,12 +23,12 @@
 ###  安装使用
 
 确保系统已安装 [Hugo](https://gohugo.io/)，可以通过以下命令检查版本：
- ```bash
-   hugo version
- ```
+```bash
+  hugo version
+```
 在站点目录中启动 Hugo 本地服务器
 ```bash
-hugo server
+  hugo server
 ```
 ###  修改配置文件
 修改hugo.toml、及data下的yml配置文件。
@@ -37,9 +37,11 @@ hugo server
 
 完整的使用说明和文档，请访问 项目文档链接：<https://test.brain-hole.org>
 
-## 🤝 贡献
+## 🤝 赞助
 
-欢迎任何形式的贡献！
+<p align="center">
+  <img src="https://img.brain-hole.org/images/2023/08/26/64e9c185ce5bb.webp" alt="项目 Logo" width="300">
+</p>
 
 ## 🛡️ 许可证
 
@@ -47,7 +49,8 @@ MIT License
 
 Copyright (c) 2018 南小北
 
-Copyright (c) 2023 BrainSpace
+Modified by BrainSpace (2024)
+
 Website: https://brain-hole.org
 
 Major changes:
@@ -55,3 +58,5 @@ Major changes:
 - Updated color scheme and typography
 - Enhanced mobile responsiveness and user interface
 - Added new features and custom pages
+
+
