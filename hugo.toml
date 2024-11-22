@@ -1,6 +1,6 @@
 baseURL = 'https://test.brain-hole.org'  # 网站的基本URL
 languageCode = 'zh'  # 网站使用的语言代码，这里是中文
-title = 'BrainSpace'  # 网站标题
+title = 'BrainSpace - 探索灵感 记录想法与故事'  # 网站标题
 theme = 'BrainSpace'  # 使用的主题名称
 pagination.pagerSize = 12  # 分页的大小，每页显示的项目数量
 disableKinds = ["taxonomy", "section"]  # 禁用分类和部分功能
@@ -9,7 +9,8 @@ disableKinds = ["taxonomy", "section"]  # 禁用分类和部分功能
   description = '欢迎来到 BrainSpace，一个探索并记录灵感，记录想法与故事的个人空间！'  # 网站描述
   
   imgurl = "https://bu.dusays.com"  # 图片资源URL
-  
+
+  name = 'BrainSpace'  # 网站名称
   byYear = '2023'  # 版权起始年份
   Time = '2022-12-28T00:00:00'  # 网站创建时间
   Miit = 'MIIT20230001号'  # 备案号
@@ -21,11 +22,10 @@ disableKinds = ["taxonomy", "section"]  # 禁用分类和部分功能
   
   twitter = 'YOUR_TWITTER_ID'  # 
   
+  logo = '/2024/06/11/6668356c432ea.webp'  # 灵感图片路径
   avatar = '/2023/11/07/6549e08158c74.webp'  # 头像图片路径
   topavatar = '/2023/12/29/658e16beb2c7b.webp'  # 顶部头像图片路径
-  Brainhole = '/2024/06/11/6668356c432ea.webp'  # 灵感图片路径
   classmate = '/2024/09/29/66f95c66cad27.webp'  # 同学图片路径
-  name = 'Brain hole'  # 网站名称
   
   aboutme = '门前的花自杀了，一生不愁吃穿，唯独缺自由与爱。'  # 关于我的简介
   githuburl = 'https://github.com/mrxie68'  # GitHub链接

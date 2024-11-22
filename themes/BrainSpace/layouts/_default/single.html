@@ -63,7 +63,27 @@
         </div>
     </li>
  </ul>-->
-
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    twikoo.getCommentsCount({
+      envId: '{{ .Site.Data.twikoo.envId }}', // 替换为您的 Twikoo 环境 ID
+      urls: ['{{ .RelPermalink }}'], // 使用当前页面的相对 Permalink
+      includeReply: false
+    }).then(function (res) {
+      if (res && res.length > 0 && res[0].count > 0) {
+        // 有评论时显示评论计数
+        document.getElementById('comment-count').innerText = `评论 ${res[0].count}`;
+      } else {
+        // 无评论时显示“无评论”
+        document.getElementById('comment-count').innerText = '无评论';
+      }
+    }).catch(function (err) {
+      console.error(err);
+      // 出错时显示错误信息
+      document.getElementById('comment-count').innerText = '评论加载失败';
+    });
+  });
+</script>
   <section class="my-section" style="text-align: justify;">{{ .Content }}</section>
   <!-- {{ if .Params.tags }}
 标签
